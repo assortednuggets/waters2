@@ -22,25 +22,28 @@ def create_enhanced_popup_content(gage):
 def attach_gage_popups(map_widget, gages_layer):
     """
     Attach hover events to the gages_layer to display popups on mouseover.
-    Using the newer ipyleaflet callback signature: (event, feature, id, properties, ...)
+    Using the ipyleaflet callback signature: (event, feature, id, properties, ...)
     """
 
     def on_gages_hover(event, feature, id, properties, **kwargs):
-        # Print out everything for debugging:
         print(f"[DEBUG] Hover event: {event}, feature: {feature}, id: {id}, coords: {kwargs.get('coordinates')}")
 
         if event == 'mouseover':
-            # Create the popup content
+            coords = kwargs.get('coordinates', [0, 0])
+            # Swap order, because ipyleaflet wants (lat, lon)
+            lon, lat = coords[0], coords[1]
+
+            # Prepare the popup content
             popup_content = create_enhanced_popup_content(properties or {})
             popup = Popup(
-                location=kwargs.get('coordinates', (0, 0)),
+                location=(lat, lon),
                 child=HTML(popup_content),
                 close_button=False,
                 auto_close=True,
-                close_on_escape_key=True
+                close_on_escape_key=True,
+                auto_pan=False,  # Prevent map from jumping to this location
             )
             map_widget.add_layer(popup)
-            # Store the popup object so we can remove it later
             properties['popup'] = popup
 
         elif event == 'mouseout':

@@ -1,0 +1,44 @@
+name: hand2
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - gdal
+  - python=3.11
+  - py3dep
+  - pynhd
+  - pygeohydro
+  - pydaymet
+  - pygridmet
+  - pynldas2
+  - hydrosignatures
+  - pygeoogc
+  - pygeoutils
+  - async-retriever
+  - ca-certificates
+  - openssl
+  - bottleneck
+  - numba
+  - pyogrio
+  - py7zr
+  - planetary-computer
+  - pystac-client
+  - certifi
+  - ipykernel
+  - ipyleaflet
+  - ipython
+  - leafmap
+  - seaborn
+  - click
+  - geojson
+  - numpy
+  - pyflwdir
+  - pyproj
+  - rasterio
+  - requests
+  - shapely
+  - contextily
+  - jupyterlab
+  - ipympl
+  - dataretrieval
+prefix: /opt/homebrew/Caskroom/miniforge/base/envs/hand2
