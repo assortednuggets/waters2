@@ -41,4 +41,4 @@ dependencies:
   - jupyterlab
   - ipympl
   - dataretrieval
-prefix: /opt/homebrew/Caskroom/miniforge/base/envs/hand2
+
